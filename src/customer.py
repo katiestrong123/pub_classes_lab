@@ -4,3 +4,5 @@ class Customer:
         self.wallet = wallet
         self.age = age
     
+    def reduce_wallet(self, price):
+        self.wallet -= price    

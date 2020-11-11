@@ -1,6 +1,7 @@
 import unittest
 from src.pub import *
 from src.drink import *
+from src.customer import *
 
 class TestPub(unittest.TestCase):
     def setUp(self):
@@ -17,4 +18,29 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1000, self.pub.till)
 
     def test_pub_has_drinks(self):
-        self.assertEqual(2, self.pub.stock_count())
+        self.assertEqual(2, self.pub.drinks_list())
+
+    def test_can_increase_till(self):
+        # Arrange
+        # Act 
+        self.pub.increase_till(5.0)
+        # Assert 
+        self.assertEqual(1005.0, self.pub.till)
+
+    def test_can_find_drink_by_name(self):
+        # arrange
+        # act
+        self.pub.find_drink_by_name("Lager")
+        # assert
+        self.assertEqual(self.drink_1, self.pub.selection_of_drinks[0])
+
+    def test_can_sell_drink_to_customer(self):
+        # Arrange 
+        customer = Customer("Ben Benson", 100.0, 33)
+        # act
+        self.pub.sell_drink_to_customer("Lager", customer)
+        # Assert
+        self.assertEqual(95.5, customer.reduce_wallet())
+        self.assertEqual(1004.5, self.pub.increase_till())
+
+        

@@ -4,5 +4,18 @@ class Pub:
         self.till = till
         self.selection_of_drinks = selection_of_drinks
 
-    def stock_count(self):
+    def drinks_list(self):
         return len(self.selection_of_drinks)
+
+    def increase_till(self, amount):
+        self.till += amount
+
+    def find_drink_by_name(self, drink_choice):
+        for drink in self.selection_of_drinks:
+            if drink == drink_choice:
+                return drink
+
+    def sell_drink_to_customer(self, drink_choice, customer):
+        customers_drink = self.find_drink_by_name(drink_choice)
+        customer.reduce_wallet(customers_drink)
+        self.increase_till(amount)
