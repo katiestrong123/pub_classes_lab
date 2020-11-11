@@ -14,6 +14,8 @@ class TestCustomer(unittest.TestCase):
     def test_customer_has_age(self):
         self.assertEqual(63, self.customer.age)
 
+    
+
     @unittest.skip("")
     def test_customer_can_buy_drink(self):
         pass 
