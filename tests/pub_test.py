@@ -30,9 +30,9 @@ class TestPub(unittest.TestCase):
     def test_can_find_drink_by_name(self):
         # arrange
         # act
-        self.pub.find_drink_by_name("Lager")
+        found_drink = self.pub.find_drink_by_name("Lager")
         # assert
-        self.assertEqual(self.drink_1, self.pub.selection_of_drinks[0])
+        self.assertEqual(self.drink_1, found_drink)
 
     def test_can_sell_drink_to_customer(self):
         # Arrange 
@@ -40,7 +40,7 @@ class TestPub(unittest.TestCase):
         # act
         self.pub.sell_drink_to_customer("Lager", customer)
         # Assert
-        self.assertEqual(95.5, customer.reduce_wallet())
-        self.assertEqual(1004.5, self.pub.increase_till())
+        self.assertEqual(95.5, customer.wallet)
+        self.assertEqual(1004.5, self.pub.till)
 
         

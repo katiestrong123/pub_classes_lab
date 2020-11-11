@@ -12,10 +12,10 @@ class Pub:
 
     def find_drink_by_name(self, drink_choice):
         for drink in self.selection_of_drinks:
-            if drink == drink_choice:
+            if drink.name == drink_choice:
                 return drink
 
     def sell_drink_to_customer(self, drink_choice, customer):
         customers_drink = self.find_drink_by_name(drink_choice)
-        customer.reduce_wallet(customers_drink)
-        self.increase_till(amount)
+        customer.reduce_wallet(customers_drink.price)
+        self.increase_till(customers_drink.price)
